@@ -14,7 +14,7 @@ GAT27PCR=GTGAGTGATGGTTGAGGATGTGTGGAG
 GAT27PCRRC=CTCCACACATCCTCAACCATCACTCAC
 
 ### Running Cutadapt
-for i in {1..254}
+for i in {1..235}
 do
 
   ##### Here we retrive the name of the fastq files to use it as an input for cutadapt run
@@ -33,7 +33,7 @@ done
 
 
 ### Running STAR
-for i in {1..254}
+for i in {1..235}
 do
 
   read1="$(find $dir/cutadapt_output -name '*_R1.fq.gz' -printf "%f\n" | sort | sed -n "$i"p)"

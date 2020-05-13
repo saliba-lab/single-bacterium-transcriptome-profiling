@@ -305,7 +305,7 @@ ggplot(salt_ten_pooled, aes(x = bulk + 1, y = mean + 1)) +
   scale_x_continuous(trans='log10') +
   ylab("mean expression in our data (log)") +
   xlab("tpm in Hinton data (log)") +
-  stat_cor(method = "pearson") +
+  stat_cor(method = "spearman") +
   theme_classic()
 
 ggsave("./output/sFig6_salt_ten.pdf")
@@ -323,7 +323,7 @@ ggplot(ana_ten_pooled, aes(x = bulk + 1, y = mean + 1)) +
   scale_x_continuous(trans='log10') +
   ylab("mean expression in our data (log)") +
   xlab("tpm in Hinton data (log)") +
-  stat_cor(method = "pearson") +
+  stat_cor(method = "spearman") +
   theme_classic()
 
 ggsave("./output/sFig6_ana_ten.pdf")
@@ -341,7 +341,7 @@ ggplot(spi_ten_pooled, aes(x = bulk + 1, y = mean + 1)) +
   scale_x_continuous(trans='log10') +
   ylab("mean expression in our data (log)") +
   xlab("tpm in Hinton data (log)") +
-  stat_cor(method = "pearson") +
+  stat_cor(method = "spearman") +
   theme_classic()
 
 ggsave("./output/sFig6_spi_ten.pdf")
@@ -360,7 +360,7 @@ ggplot(salt_single_pooled, aes(x = bulk + 1, y = mean + 1)) +
   scale_x_continuous(trans='log10') +
   ylab("mean expression in our data (log)") +
   xlab("tpm in Hinton data (log)") +
-  stat_cor(method = "pearson") +
+  stat_cor(method = "spearman") +
   theme_classic()
 
 ggsave("./output/sFig6_salt_single.pdf")
@@ -378,7 +378,7 @@ ggplot(ana_single_pooled, aes(x = bulk + 1, y = mean + 1)) +
   scale_x_continuous(trans='log10') +
   ylab("mean expression in our data (log)") +
   xlab("tpm in Hinton data (log)") +
-  stat_cor(method = "pearson") +
+  stat_cor(method = "spearman") +
   theme_classic()
 
 ggsave("./output/sFig6_ana_single.pdf")
@@ -396,7 +396,7 @@ ggplot(spi_single_pooled, aes(x = bulk + 1, y = mean + 1)) +
   scale_x_continuous(trans='log10') +
   ylab("mean expression in our data (log)") +
   xlab("tpm in Hinton data (log)") +
-  stat_cor(method = "pearson") +
+  stat_cor(method = "spearman") +
   theme_classic()
 
 ggsave("./output/sFig6_spi_single.pdf")

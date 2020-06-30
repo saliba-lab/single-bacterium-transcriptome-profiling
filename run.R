@@ -332,7 +332,7 @@ ggsave("./output/sFig6_ana_ten.pdf")
 spi_ten_pooled <- data.frame(mean = rowMeans(nTen[ ,rownames(ten[ten$condition == "spi",])]), gene = rownames(nTen))
 rownames(spi_ten_pooled) <- gsub("1344_", "", rownames(spi_ten_pooled))
 spi_ten_pooled <- spi_ten_pooled[rownames(tpm),]
-spi_ten_pooled <- data.frame(spi_ten_pooled, bulk = as.numeric(tpm[,11]))
+spi_ten_pooled <- data.frame(spi_ten_pooled, bulk = as.numeric(tpm[,14]))
 
 
 ggplot(spi_ten_pooled, aes(x = bulk + 1, y = mean + 1)) +
@@ -387,7 +387,7 @@ ggsave("./output/sFig6_ana_single.pdf")
 spi_single_pooled <- data.frame(mean = rowMeans(nSingle[ ,rownames(single[single$condition == "spi",])]), gene = rownames(nSingle))
 rownames(spi_single_pooled) <- gsub("1344_", "", rownames(spi_single_pooled))
 spi_single_pooled <- spi_single_pooled[rownames(tpm),]
-spi_single_pooled <- data.frame(spi_single_pooled, bulk = as.numeric(tpm[,11]))
+spi_single_pooled <- data.frame(spi_single_pooled, bulk = as.numeric(tpm[,14]))
 
 
 ggplot(spi_single_pooled, aes(x = bulk + 1, y = mean + 1)) +

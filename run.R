@@ -18,7 +18,7 @@ dir.create("output")
 ## importing col Data
 colData <- read.csv("./lib_changed_corr_fab.csv", row.names = 1)
 rownames(colData) <- as.character(colData$library)
-colData$n.cells <- gsub("1", "single" ,gsub("10", "ten", colData$n.cells))
+# colData$n.cells <- gsub("1", "single" ,gsub("10", "ten", colData$n.cells))
 ## importing row data
 anno <- read.table("./index/Salmonella_enterica_subsp_enterica_serovar_typhimurium_str_sl1344.ASM21085v2.45.gtf", sep = "\t")
 anno <- anno[anno$V3 == "gene", ]

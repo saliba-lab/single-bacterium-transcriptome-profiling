@@ -15,7 +15,7 @@ library(ggpubr)
 setwd("/home/hiri/Desktop/PhD_Projects/2020-03-02-Fabian_revision")
 dir.create("output")
             
-## importing col Data and removing one single outlier
+## importing col Data
 colData <- read.csv("./lib_changed_corr_fab.csv", row.names = 1)
 rownames(colData) <- as.character(colData$library)
 colData$n.cells <- gsub("1", "single" ,gsub("10", "ten", colData$n.cells))

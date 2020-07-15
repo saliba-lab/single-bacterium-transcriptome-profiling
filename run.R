@@ -12,7 +12,7 @@ library(ggpubr)
 
         
       
-setwd("/home/hiri/Desktop/PhD_Projects/2020-03-02-Fabian_revision")
+setwd("/address/to/working/directory/")
 dir.create("output")
             
 ## importing col Data

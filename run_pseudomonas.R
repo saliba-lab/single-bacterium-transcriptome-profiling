@@ -8,10 +8,10 @@
   
   
   
-  setwd("/home/hiri/Desktop/PhD_Projects/2020-02-15-Fabian_revision/Pseudomonas")
+  setwd("/address/to/working/directory/")
   
   ## importing row data
-  anno <- read.table("/home/hiri/Desktop/PhD_Projects/2020-02-15-Fabian_revision/Pseudomonas/index/Pseudomonas_aeruginosa_pao1.ASM676v1.45.gtf", sep = "\t")
+  anno <- read.table("./index/Pseudomonas_aeruginosa_pao1.ASM676v1.45.gtf", sep = "\t")
   anno <- anno[anno$V3 == "gene", ]
   
   biotype <- gsub(";", "", gsub(".*; gene_biotype ", "", anno$V9))
@@ -22,9 +22,9 @@
   rownames(rowData) <- gene_id
   
   ## Importing the count table
-  temp <- list.files("/home/hiri/Desktop/PhD_Projects/2020-02-15-Fabian_revision/Pseudomonas/unique_count", pattern = "unique.txt")
+  temp <- list.files("./unique_count", pattern = "unique.txt")
   col <- gsub("Aligned.out.unique.txt", "", temp)
-  filenames <- list.files(path = "/home/hiri/Desktop/PhD_Projects/2020-02-15-Fabian_revision/Pseudomonas/unique_count", full.names = TRUE)
+  filenames <- list.files(path = "./unique_count", full.names = TRUE)
   datalist <- lapply(filenames, function(x){read.table(file = x, header = TRUE, row.names = 1, sep = "\t", stringsAsFactors = FALSE)[,6]})
   unique_table <- sapply(datalist, cbind)
   colnames(unique_table) <- col
@@ -67,7 +67,7 @@
   ten <- colData[colData$n.cells == "10",]
   
   ### Here the non_unique counts are used to calculate the percentage of rRNA, tRNA, etc.
-  filenames <- list.files(path = "/home/hiri/Desktop/PhD_Projects/2020-02-15-Fabian_revision/Pseudomonas/non_unique_count", full.names = TRUE)
+  filenames <- list.files(path = "./non_unique_count", full.names = TRUE)
   datalist <- lapply(filenames, function(x){read.table(file = x, header = TRUE, row.names = 1, sep = "\t", stringsAsFactors = FALSE)[,6]})
   non_unique_table <- sapply(datalist, cbind)
   colnames(non_unique_table) <- col

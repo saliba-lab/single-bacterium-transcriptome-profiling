@@ -41,7 +41,7 @@
   colData$lib.size <- colSums(unique_table)
   
   
-  ## sFig6a
+  ## sFig7
   p1 <- ggplot(data = colData, aes(x = n.gene, y = lib.size, color = n.cells)) +
     geom_point(size = 2) +
     geom_point(shape = 1,size = 2,colour = "black") +
@@ -59,10 +59,10 @@
     xlab("")
   
   
-  sFig6a <- grid.arrange(p1, p2, ncol=2)
-  ggsave("sFig6a.pdf", sFig6a, width = 7)
+  sFig7 <- grid.arrange(p1, p2, ncol=2)
+  ggsave("sFig7.pdf", sFig7, width = 7)
   
-  ## sFig6b
+  ## sFig7b
   single <- colData[colData$n.cells == "sc",]
   ten <- colData[colData$n.cells == "10",]
   

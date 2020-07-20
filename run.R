@@ -10,7 +10,13 @@ library(Seurat)
 library(readxl)
 library(ggpubr)
 
-        
+
+### All over the script: 
+### spi >>> Late stationary phase
+### ana >>> Anaerobic shock
+### salt >>> Salt shock
+
+
       
 setwd("/address/to/working/directory/")
 dir.create("output")

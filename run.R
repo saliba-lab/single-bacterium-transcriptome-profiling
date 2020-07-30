@@ -56,7 +56,7 @@ colData$lib.size <- colSums(unique_table)
           
 
             
-## Fig1b
+## Fig2b
 p1 <- ggplot(data = colData[colData$n.cells == "single", ], aes(x = condition, y=n.gene, color = condition)) +
   geom_jitter() +
   geom_violin(alpha = 0) + 

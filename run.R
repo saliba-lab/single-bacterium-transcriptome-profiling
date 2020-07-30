@@ -78,7 +78,7 @@ Fig2b <- grid.arrange(p1, p2, ncol=1)
 ggsave("./output/Fig2b.png", Fig2b, width = 8, height = 6)
             
             
-## sFig2b
+## edFig2b
 p1 <- ggplot(data = colData[colData$n.cells == "single", ], aes(x = lib.size, y=n.gene, color = condition)) +
   geom_jitter() +
   theme_classic() +
@@ -95,11 +95,11 @@ p2 <- ggplot(data = colData[colData$n.cells == "ten", ], aes(x = lib.size, y=n.g
   xlab("Library Size") +
   ggtitle("10 pooled cells")
         
-sFig2b <- grid.arrange(p1, p2, ncol=2)
-ggsave("./output/sFig2b.png", sFig2b, width = 10, height = 5)
+edFig2b <- grid.arrange(p1, p2, ncol=2)
+ggsave("./output/edFig2b.png", edFig2b, width = 10, height = 5)
           
           
-## sFig2a
+## edFig2a
 p1 <- ggplot(data = colData[colData$n.cells == "single", ], aes(x = condition, y=lib.size, color = condition)) +
   geom_jitter() +
   geom_violin(alpha = 0) + 
@@ -119,8 +119,8 @@ p2 <- ggplot(data = colData[colData$n.cells == "ten", ], aes(x = condition, y=li
   theme(legend.position = "none") + 
   ggtitle("10 pooled cells")
             
-sFig2a <- grid.arrange(p1, p2, ncol=2)
-ggsave("./output/sFig2a.png", sFig2a, width = 12, height = 4)
+edFig2a <- grid.arrange(p1, p2, ncol=2)
+ggsave("./output/edFig2a.png", edFig2a, width = 12, height = 4)
           
           
           
@@ -158,7 +158,7 @@ pca_ten <- ggplot(data.frame(PC1 = res.pca$x[,"PC1"], PC2 = res.pca$x[,"PC2"], c
   geom_vline(xintercept=0, linetype="dashed") +
   ggtitle("Ten cells")
 
-## sFig6b            
+## edFig6b            
 lib_pca_ten <- ggplot(data.frame(PC1 = res.pca$x[,"PC1"], PC2 = res.pca$x[,"PC2"], condition = ten$lib.size), aes(x = PC1, y = PC2, color = condition)) +
   geom_jitter(size = 2) +
   scale_color_gradientn(colours = brewer.pal(9, "YlOrRd")) +
@@ -178,14 +178,14 @@ n.gene_pca_ten <- ggplot(data.frame(PC1 = res.pca$x[,"PC1"], PC2 = res.pca$x[,"P
   geom_vline(xintercept=0, linetype="dashed") +
   ggtitle("n.gene (Ten cells)")
         
-sFig6b <- grid.arrange(lib_pca_ten, n.gene_pca_ten, ncol=2)
-ggsave("./output/sFig6b.png", sFig6b, width = 10)
+edFig6b <- grid.arrange(lib_pca_ten, n.gene_pca_ten, ncol=2)
+ggsave("./output/edFig6b.png", edFig6b, width = 10)
           
-## sFig6c_left
+## edFig6c_left
 fviz_eig(res.pca, addlabels = TRUE, ylim = c(0, 20))
-ggsave("./output/sFig6c_left.png")
+ggsave("./output/edFig6c_left.png")
  
-## sFig6b_biplot
+## edFig6b_biplot
 var <- get_pca_var(res.pca)
 contrib <- fviz_contrib(res.pca, choice = "var", axes = 1:2)$data
 contrib <- rownames(contrib[order((contrib$contrib), decreasing = TRUE), ])[1:15]
@@ -203,7 +203,7 @@ biplot_ten <- biplot_ten +
   xlab("PC1") +
   ylab("PC2")
   
-ggsave("./output/sFig6b_biplot.png", height = 4, width = 3.5)
+ggsave("./output/edFig6b_biplot.png", height = 4, width = 3.5)
 
 
 ### Performing PCA (single cell)
@@ -216,7 +216,7 @@ pca_single <- ggplot(data.frame(PC1 = res.pca$x[,"PC1"], PC2 = res.pca$x[,"PC2"]
   geom_vline(xintercept=0, linetype="dashed") +
   ggtitle("Single cell")
 
-##sFig6a
+##edFig6a
 lib_pca_single <- ggplot(data.frame(PC1 = res.pca$x[,"PC1"], PC2 = res.pca$x[,"PC2"], condition = single$lib.size), aes(x = PC1, y = PC2, color = condition)) +
   geom_jitter(size = 2) +
   scale_color_gradientn(colours = brewer.pal(9, "YlOrRd")) +
@@ -237,19 +237,19 @@ n.gene_pca_single <- ggplot(data.frame(PC1 = res.pca$x[,"PC1"], PC2 = res.pca$x[
   ggtitle("n.gene (single cells)")
           
           
-sFig6a <- grid.arrange(lib_pca_single, n.gene_pca_single, ncol=2)
-ggsave("./output/sFig6a.png", sFig5a, width = 10)
+edFig6a <- grid.arrange(lib_pca_single, n.gene_pca_single, ncol=2)
+ggsave("./output/edFig6a.png", edFig5a, width = 10)
  
 
-## Fig2a         
+## Fig3a         
 Fig3a <- grid.arrange(pca_single, pca_ten, ncol=1)
 ggsave("./output/Fig3a.png", Fig3a, height = 12)
           
-## sFig6c_right
+## edFig6c_right
 fviz_eig(res.pca, addlabels = TRUE, ylim = c(0, 20))
-ggsave("./output/sFig6c_right.png")
+ggsave("./output/edFig6c_right.png")
 
-## sFig6a_biplot
+## edFig6a_biplot
 var <- get_pca_var(res.pca)
 contrib <- fviz_contrib(res.pca, choice = "var", axes = 1:2)$data
 contrib <- rownames(contrib[order((contrib$contrib), decreasing = TRUE), ])[1:15]
@@ -267,7 +267,7 @@ biplot_single <- biplot_single +
   xlab("PC1") +
   ylab("PC2")
 
-ggsave("./output/sFig6a_biplot.png", height = 4, width = 3)
+ggsave("./output/edFig6a_biplot.png", height = 4, width = 3)
 #############################################################################
 ################ Correlation between our data and Kroger data ###############
 #############################################################################
@@ -278,7 +278,7 @@ tpm <- tpm[-c(1,2), ]
 tpm <- as.data.frame(tpm)
 rownames(tpm) <- tpm[,1]
 
-## sFig5_salt_ten
+## edFig5_salt_ten
 salt_ten_pooled <- data.frame(mean = rowMeans(nTen[ ,rownames(ten[ten$condition == "salt",])]), gene = rownames(nTen))
 rownames(salt_ten_pooled) <- gsub("1344_", "", rownames(salt_ten_pooled))
 salt_ten_pooled <- salt_ten_pooled[rownames(tpm),]
@@ -293,9 +293,9 @@ ggplot(salt_ten_pooled, aes(x = bulk + 1, y = mean + 1)) +
   stat_cor(method = "spearman") +
   theme_classic()
 
-ggsave("./output/sFig5_salt_ten.png")
+ggsave("./output/edFig5_salt_ten.png")
 
-## sFig5_ana_ten 
+## edFig5_ana_ten 
 ana_ten_pooled <- data.frame(mean = rowMeans(nTen[ ,rownames(ten[ten$condition == "ana",])]), gene = rownames(nTen))
 rownames(ana_ten_pooled) <- gsub("1344_", "", rownames(ana_ten_pooled))
 ana_ten_pooled <- ana_ten_pooled[rownames(tpm),]
@@ -311,9 +311,9 @@ ggplot(ana_ten_pooled, aes(x = bulk + 1, y = mean + 1)) +
   stat_cor(method = "spearman") +
   theme_classic()
 
-ggsave("./output/sFig5_ana_ten.png")
+ggsave("./output/edFig5_ana_ten.png")
 
-## sFig5_spi_ten
+## edFig5_spi_ten
 spi_ten_pooled <- data.frame(mean = rowMeans(nTen[ ,rownames(ten[ten$condition == "spi",])]), gene = rownames(nTen))
 rownames(spi_ten_pooled) <- gsub("1344_", "", rownames(spi_ten_pooled))
 spi_ten_pooled <- spi_ten_pooled[rownames(tpm),]
@@ -329,10 +329,10 @@ ggplot(spi_ten_pooled, aes(x = bulk + 1, y = mean + 1)) +
   stat_cor(method = "spearman") +
   theme_classic()
 
-ggsave("./output/sFig5_spi_ten.png")
+ggsave("./output/edFig5_spi_ten.png")
 
 
-## sFig5_salt_single
+## edFig5_salt_single
 salt_single_pooled <- data.frame(mean = rowMeans(nSingle[ ,rownames(single[single$condition == "salt",])]), gene = rownames(nSingle))
 rownames(salt_single_pooled) <- gsub("1344_", "", rownames(salt_single_pooled))
 salt_single_pooled <- salt_single_pooled[rownames(tpm),]
@@ -348,9 +348,9 @@ ggplot(salt_single_pooled, aes(x = bulk + 1, y = mean + 1)) +
   stat_cor(method = "spearman") +
   theme_classic()
 
-ggsave("./output/sFig5_salt_single.png")
+ggsave("./output/edFig5_salt_single.png")
 
-## sFig5_ana_single
+## edFig5_ana_single
 ana_single_pooled <- data.frame(mean = rowMeans(nSingle[ ,rownames(single[single$condition == "ana",])]), gene = rownames(nSingle))
 rownames(ana_single_pooled) <- gsub("1344_", "", rownames(ana_single_pooled))
 ana_single_pooled <- ana_single_pooled[rownames(tpm),]
@@ -366,9 +366,9 @@ ggplot(ana_single_pooled, aes(x = bulk + 1, y = mean + 1)) +
   stat_cor(method = "spearman") +
   theme_classic()
 
-ggsave("./output/sFig5_ana_single.png")
+ggsave("./output/edFig5_ana_single.png")
 
-## sFig5_spi_single
+## edFig5_spi_single
 spi_single_pooled <- data.frame(mean = rowMeans(nSingle[ ,rownames(single[single$condition == "spi",])]), gene = rownames(nSingle))
 rownames(spi_single_pooled) <- gsub("1344_", "", rownames(spi_single_pooled))
 spi_single_pooled <- spi_single_pooled[rownames(tpm),]
@@ -384,7 +384,7 @@ ggplot(spi_single_pooled, aes(x = bulk + 1, y = mean + 1)) +
   stat_cor(method = "spearman") +
   theme_classic()
 
-ggsave("./output/sFig5_spi_single.png")
+ggsave("./output/edFig5_spi_single.png")
 #########################################################################
 ############## Correlation between single and ten data ##################
 #########################################################################
@@ -392,7 +392,7 @@ salt_pooled <- data.frame(mean_ten = rowMeans(nTen[ ,rownames(ten[ten$condition 
 ana_pooled <- data.frame(mean_ten = rowMeans(nTen[ ,rownames(ten[ten$condition == "ana",])]), mean_single = rowMeans(nSingle[ ,rownames(single[single$condition == "ana",])]))
 spi_pooled <- data.frame(mean_ten = rowMeans(nTen[ ,rownames(ten[ten$condition == "spi",])]), mean_single = rowMeans(nSingle[ ,rownames(single[single$condition == "spi",])]))
 
-## sFig5a_salt
+## edFig5a_salt
 ggplot(salt_pooled, aes(x = mean_single + 1, y = mean_ten + 1)) +
   geom_point(color = "#00BA38") +
   scale_y_continuous(trans='log10') +
@@ -402,9 +402,9 @@ ggplot(salt_pooled, aes(x = mean_single + 1, y = mean_ten + 1)) +
   stat_cor(method = "pearson") +
   theme_classic()
 
-ggsave("./output/sFig5a_salt.png")
+ggsave("./output/edFig5a_salt.png")
 
-## sFig5a_ana
+## edFig5a_ana
 ggplot(ana_pooled, aes(x = mean_single + 1, y = mean_ten + 1)) +
   geom_point(color = "#F8766D") +
   scale_y_continuous(trans='log10') +
@@ -414,9 +414,9 @@ ggplot(ana_pooled, aes(x = mean_single + 1, y = mean_ten + 1)) +
   stat_cor(method = "pearson") +
   theme_classic()
 
-ggsave("./output/sFig5a_ana.png")
+ggsave("./output/edFig5a_ana.png")
 
-## sFig5a_spi
+## edFig5a_spi
 ggplot(spi_pooled, aes(x = mean_single + 1, y = mean_ten + 1)) +
   geom_point(color = "#619cff") +
   scale_y_continuous(trans='log10') +
@@ -426,12 +426,12 @@ ggplot(spi_pooled, aes(x = mean_single + 1, y = mean_ten + 1)) +
   stat_cor(method = "pearson") +
   theme_classic()
 
-ggsave("./output/sFig5a_spi.png")
+ggsave("./output/edFig5a_spi.png")
 
 ########################################################
 ########################################################
 ########################################################
-## sFig4a
+## edFig4a
 spi_ten <- nTen[,rownames(ten[ten$condition == "spi",])]
 cv_spi <- data.frame(cv = rowSds(spi_ten)/rowMeans(spi_ten) , mean = rowMeans(spi_ten))
 plot_spi <- ggplot(cv_spi, aes(x = mean , y = cv)) +
@@ -456,11 +456,11 @@ plot_ana <- ggplot(cv_ana, aes(x = mean , y = cv)) +
   scale_y_continuous() +
   theme_classic()
     
-sFig4a <- grid.arrange(plot_salt, plot_ana, plot_spi, ncol = 3)
-ggsave("./output/sFig4a.png", sFig4a, width = 20, height = 6)
+edFig4a <- grid.arrange(plot_salt, plot_ana, plot_spi, ncol = 3)
+ggsave("./output/edFig4a.png", edFig4a, width = 20, height = 6)
     
     
-## sFig4b
+## edFig4b
 salt_single <- nSingle[,rownames(single[single$condition == "salt",])]
 cv_salt <- data.frame(cv = rowSds(salt_single)/rowMeans(salt_single) , mean = rowMeans(salt_single))
 plot_salt <- ggplot(cv_salt, aes(x = mean , y = cv)) +
@@ -485,13 +485,13 @@ plot_spi <- ggplot(cv_spi, aes(x = mean , y = cv)) +
   scale_y_continuous() +
   theme_classic()
 
-sFig4b <- grid.arrange(plot_salt, plot_ana, plot_spi, ncol = 3)
-ggsave("./output/sFig4b.png", sFig4b, width = 20, height = 6)
+edFig4b <- grid.arrange(plot_salt, plot_ana, plot_spi, ncol = 3)
+ggsave("./output/edFig4b.png", edFig4b, width = 20, height = 6)
     
 ##############################################
 ##############################################
 ##############################################
-## Fig1a
+## Fig2a
 ### Here the non_unique counts are used to calculate the percentage of rRNA, tRNA, etc.
 filenames <- list.files(path = "./non_unique_count", full.names = TRUE)
 datalist <- lapply(filenames, function(x){read.table(file = x, header = TRUE, row.names = 1, sep = "\t", stringsAsFactors = FALSE)[,6]})

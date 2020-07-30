@@ -787,7 +787,7 @@ tpm_salt$Group<-ifelse(tpm_salt$ratio>1,"A:Up in Kroger","B:Down in Kroger")
 tpm_salt$Identity<-ifelse(tpm_salt$ratio>0,"A","B")
 tpm_salt$gene <- rownames(tpm_salt)
 
-## Fig2c_single  
+## Fig3c_single  
 ggplot(tpm_salt,aes(x=gene,y=ratio,fill=Group)) + 
   geom_bar(stat="identity") +
   theme_classic() +
